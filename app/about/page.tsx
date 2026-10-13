@@ -15,7 +15,7 @@ export default function About() {
           <strong>이름</strong> 남유진
         </li>
         <li>
-          <strong>학교/전공</strong> 중부대학교 정보보호학전공 
+          <strong>학교/전공</strong> 중부대학교 정보보호학전공
         </li>
         <li>
           <strong>관심 분야</strong> 웹 개발, 정보보호
