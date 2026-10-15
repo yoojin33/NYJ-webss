@@ -16,7 +16,7 @@ export default async function Page() {
         <AddItemButton type="assignment" />
       </div>
       <p className="muted">수업 과제로 만든 웹사이트입니다.</p>
-      <ItemList items={items} />
+      <ItemList items={items} deletable />
     </>
   )
 }

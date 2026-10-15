@@ -386,3 +386,24 @@ button:disabled {
   opacity: 0.6;
   cursor: default;
 }
+/* 삭제 */
+.item-foot {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+}
+.del-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.del-form input {
+  flex: 1;
+  min-width: 160px;
+}
+button.danger-solid {
+  background: #b42318;
+  border-color: #b42318;
+  color: #fff;
+}

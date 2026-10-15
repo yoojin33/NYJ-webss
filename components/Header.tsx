@@ -16,7 +16,7 @@ export default function Header() {
     <header>
       <div className="container">
         <Link href="/" className="logo">
-          내 포트폴리오
+          Yoojin's Portfolio
         </Link>
         <nav>
           {NAV.map((n) => (

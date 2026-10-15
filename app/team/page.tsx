@@ -16,7 +16,7 @@ export default async function Page() {
         <AddItemButton type="team" />
       </div>
       <p className="muted">팀원들과 함께 만든 웹페이지입니다.</p>
-      <ItemList items={items} />
+      <ItemList items={items} deletable />
     </>
   )
 }
