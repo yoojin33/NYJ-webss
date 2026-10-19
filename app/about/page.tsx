@@ -21,7 +21,7 @@ export default function About() {
           <strong>관심 분야</strong> 웹 개발, 정보보호
         </li>
         <li>
-          <strong>연락처</strong> your-email@example.com
+          <strong>연락처</strong> 010-xxxx-xxxx
         </li>
       </ul>
 

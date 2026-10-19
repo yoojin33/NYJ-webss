@@ -5,9 +5,13 @@ import { useRouter } from 'next/navigation'
 
 interface DeleteItemButtonProps {
   id: string
+  basePath?: string // 삭제 API 주소 (기본: 게시물 /api/items, 팀원은 /api/members)
 }
 
-export default function DeleteItemButton({ id }: DeleteItemButtonProps) {
+export default function DeleteItemButton({
+  id,
+  basePath = '/api/items',
+}: DeleteItemButtonProps) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [password, setPassword] = useState('')
@@ -24,7 +28,7 @@ export default function DeleteItemButton({ id }: DeleteItemButtonProps) {
     setBusy(true)
     setMessage('')
     try {
-      const res = await fetch(`/api/items/${id}`, {
+      const res = await fetch(`${basePath}/${id}`, {
         method: 'DELETE',
         headers: { 'x-admin-password': password },
       })

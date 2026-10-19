@@ -407,3 +407,131 @@ button.danger-solid {
   border-color: #b42318;
   color: #fff;
 }
+/* 페이지 이동 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.page-link {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+}
+a.page-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+.page-link.current {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+.page-link.disabled {
+  color: var(--muted);
+  opacity: 0.4;
+}
+.page-gap {
+  color: var(--muted);
+  padding: 0 2px;
+}
+
+/* 팀 소개 */
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 48px;
+}
+.section-head h2 {
+  margin: 0;
+}
+.members {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.member-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.member-name {
+  font-weight: 700;
+}
+.member-role {
+  font-size: 13px;
+  color: var(--muted);
+}
+/* 수정 */
+.foot-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+button.edit {
+  background: var(--surface);
+  color: var(--accent);
+  border-color: var(--accent);
+  padding: 2px 8px;
+  font-size: 13px;
+}
+button.edit:hover {
+  background: var(--accent-soft);
+  filter: none;
+}
+/* 팀 프로젝트 소개 */
+.project-card {
+  margin-top: 16px;
+  padding: 20px 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--team);
+  border-radius: 10px;
+}
+.project-card .badge {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--team);
+}
+.project-title {
+  margin: 4px 0 8px;
+  font-size: 20px;
+  line-height: 1.4;
+}
+.project-card p {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+.project-points {
+  margin: 0 0 12px;
+  padding-left: 20px;
+}
+.project-points li {
+  margin-bottom: 4px;
+}
+/* 팀원 소개 제목: 프로젝트 소개 카드와 살짝 띄움 */
+.section-head.sub {
+  margin-top: 32px;
+}

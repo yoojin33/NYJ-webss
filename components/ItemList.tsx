@@ -1,11 +1,12 @@
 import { TYPE_LABELS } from '@/lib/constants'
 import type { ItemView } from '@/lib/constants'
 import DeleteItemButton from './DeleteItemButton'
+import EditItemButton from './EditItemButton'
 
 interface ItemListProps {
   items: ItemView[]
   emptyText?: string
-  deletable?: boolean // true 이면 각 카드에 삭제 버튼 표시
+  deletable?: boolean // true 이면 각 카드에 수정·삭제 버튼 표시
 }
 
 // 서버 컴포넌트: React가 텍스트를 자동으로 이스케이프하므로 XSS에 안전하게 출력됨
@@ -59,7 +60,10 @@ export default function ItemList({
 
           {deletable && (
             <div className="item-foot">
-              <DeleteItemButton id={item.id} />
+              <div className="foot-actions">
+                <EditItemButton item={item} />
+                <DeleteItemButton id={item.id} />
+              </div>
             </div>
           )}
         </li>
