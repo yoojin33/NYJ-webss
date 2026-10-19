@@ -1,3 +1,5 @@
+import Like from '@/models/Like'
+import { itemLikeKey } from '@/lib/likeKeys'
 import { NextResponse } from 'next/server'
 import mongoose from 'mongoose'
 import dbConnect from '@/lib/mongodb'
@@ -59,5 +61,6 @@ export async function DELETE(request: Request, { params }: Context) {
 
   await dbConnect()
   await Item.findByIdAndDelete(params.id)
+  await Like.deleteMany({ targetKey: itemLikeKey(params.id) })
   return NextResponse.json({ ok: true })
 }

@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { getItemsPage } from '@/lib/items'
+import { getLikeInfo } from '@/lib/likes'
+import { getVisitorId } from '@/lib/visitor'
+import { itemLikeKey } from '@/lib/likeKeys'
 import { parsePage } from '@/lib/pagination'
 import ItemList from '@/components/ItemList'
 import AddItemButton from '@/components/AddItemButton'
@@ -17,6 +20,10 @@ export default async function Page({
     'assignment',
     parsePage(searchParams.page),
   )
+  const likeInfo = await getLikeInfo(
+    items.map((i) => itemLikeKey(i.id)),
+    getVisitorId(),
+  )
 
   return (
     <>
@@ -24,8 +31,8 @@ export default async function Page({
         <h1>과제</h1>
         <AddItemButton type="assignment" />
       </div>
-      <p className="muted">수업 과제, 발표용으로 만든 웹사이트입니다.</p>
-      <ItemList items={items} deletable />
+      <p className="muted">수업 과제로 만든 웹사이트입니다.</p>
+      <ItemList items={items} deletable likeInfo={likeInfo} />
       <Pagination page={page} totalPages={totalPages} basePath="/assignments" />
     </>
   )

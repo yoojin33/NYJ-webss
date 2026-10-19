@@ -1,9 +1,14 @@
 import { TEAM_PROJECT } from '@/lib/teamProject'
+import { getLikeInfo } from '@/lib/likes'
+import { getVisitorId } from '@/lib/visitor'
+import { PROJECT_LIKE_KEY } from '@/lib/likeKeys'
+import LikeButton from './LikeButton'
 
-// 서버 컴포넌트: 내용은 lib/teamProject.ts 에 고정되어 있고, 화면에서 추가·수정하는 기능은 없음
-// React가 텍스트를 자동으로 이스케이프하므로 XSS에 안전하게 출력됨
-export default function TeamProjectIntro() {
+export default async function TeamProjectIntro() {
   const { title, summary, points, tags, sourceUrl, pageUrl } = TEAM_PROJECT
+  const like = (await getLikeInfo([PROJECT_LIKE_KEY], getVisitorId()))[
+    PROJECT_LIKE_KEY
+  ]
 
   return (
     <div className="project-card">
@@ -27,31 +32,39 @@ export default function TeamProjectIntro() {
         ))}
       </div>
 
-      {/* 링크를 입력한 버튼만 표시 */}
-      {(sourceUrl || pageUrl) && (
-        <div className="btns">
-          {sourceUrl && (
-            <a
-              className="btn"
-              href={sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              소스코드
-            </a>
-          )}
-          {pageUrl && (
-            <a
-              className="btn primary"
-              href={pageUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              웹사이트 보기 ↗
-            </a>
-          )}
-        </div>
-      )}
+      <div className="card-row">
+        {sourceUrl || pageUrl ? (
+          <div className="btns">
+            {sourceUrl && (
+              <a
+                className="btn"
+                href={sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                소스코드
+              </a>
+            )}
+            {pageUrl && (
+              <a
+                className="btn primary"
+                href={pageUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                웹사이트 보기 ↗
+              </a>
+            )}
+          </div>
+        ) : (
+          <span />
+        )}
+        <LikeButton
+          targetKey={PROJECT_LIKE_KEY}
+          initialCount={like.count}
+          initialLiked={like.liked}
+        />
+      </div>
     </div>
   )
 }

@@ -535,3 +535,54 @@ button.edit:hover {
 .section-head.sub {
   margin-top: 32px;
 }
+.card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.card-row .btns {
+  margin-top: 0;
+}
+
+.like-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.like-wrap .msg {
+  font-size: 12px;
+  color: #c0392b;
+}
+
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 14px;
+  color: var(--muted, #6b6b6b);
+  background: transparent;
+  border: 1px solid #d9d6cf;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+.like-btn:hover {
+  border-color: #e0627a;
+  color: #e0627a;
+}
+.like-btn.liked {
+  color: #e0627a;
+  border-color: #e0627a;
+  background: #fdf0f3;
+}
+.like-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

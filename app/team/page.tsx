@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { getItemsPage } from '@/lib/items'
+import { getLikeInfo } from '@/lib/likes'
+import { getVisitorId } from '@/lib/visitor'
+import { itemLikeKey } from '@/lib/likeKeys'
 import { parsePage } from '@/lib/pagination'
 import ItemList from '@/components/ItemList'
 import AddItemButton from '@/components/AddItemButton'
@@ -18,6 +21,10 @@ export default async function Page({
     'team',
     parsePage(searchParams.page),
   )
+  const likeInfo = await getLikeInfo(
+    items.map((i) => itemLikeKey(i.id)),
+    getVisitorId(),
+  )
 
   return (
     <>
@@ -26,7 +33,7 @@ export default async function Page({
         <AddItemButton type="team" />
       </div>
       <p className="muted">다양한 팀원들과 함께 만든 웹페이지입니다.</p>
-      <ItemList items={items} deletable />
+      <ItemList items={items} deletable likeInfo={likeInfo} />
       <Pagination page={page} totalPages={totalPages} basePath="/team" />
 
       <TeamSection />
